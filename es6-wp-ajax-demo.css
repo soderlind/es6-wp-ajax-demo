@@ -1,0 +1,15 @@
+#es6-demo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 100vh;
+
+}
+
+#es6-demo-output, #es6-demo-input {
+	font-family: monospace;
+	font-size: 3em;
+	/* height: 5rem;
+	margin-left: 1rem; */
+}
