@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', e => {
 		data.append('nonce', pluginES6WPAjax.nonce);
 		data.append('sum', self.dataset.sum);
 
-		const url = pluginES6WPAjax.ajaxurl + '?now=' + escape(new Date().getTime().toString());
+		const url = pluginES6WPAjax.ajaxurl;
 		fetch(url, {
 			method: 'POST',
 			credentials: 'same-origin',
@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', e => {
 				if (res.response == 'success') {
 					self.dataset.sum = res.data;
 					output.innerHTML = res.data;
+					console.log(res);
 				} else {
 					console.error(res);
 				}
