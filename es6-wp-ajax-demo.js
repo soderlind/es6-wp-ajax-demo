@@ -3,7 +3,7 @@
  *
  * Uses ajax_es6_ajax_action() in es6-wp-ajax-demo.php
  *
- * @author Per Soderlind <per@soderlind.no>
+ * @author Per Soderlind http://soderlind.no
  *
  */
 document.addEventListener('DOMContentLoaded', e => {

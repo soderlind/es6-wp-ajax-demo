@@ -12,7 +12,7 @@
  * Plugin URI: https://github.com/soderlind/es6-wp-ajax-demo
  * GitHub Plugin URI: https://github.com/soderlind/es6-wp-ajax-demo
  * Description: Use native JavaScript (ES6) when doing Ajax calls.
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Per Soderlind
  * Author URI:  https://soderlind.no
  * Text Domain: es6-wp-ajax-demo
@@ -32,13 +32,18 @@ const ES6_WP_AJAX_DEMO_VERSION = '1.0.0';
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\wp_scripts' );
 add_action( 'wp_ajax_es6_ajax_action', __NAMESPACE__ . '\es6_ajax_action' );
 
+/**
+ * Ajax action, triggerd by fetch() in es6-wp-ajax-demo.js
+ *
+ * @return void
+ */
 function es6_ajax_action() {
 	header( 'Content-type: application/json' );
 	if ( check_ajax_referer( 'es6_wp_ajax_nonce', 'nonce', false ) ) {
 		$sum = ( isset( $_POST['sum'] ) ) ? filter_var( wp_unslash( $_POST['sum'] ), FILTER_VALIDATE_INT, [ 'default' => 0 ] ) : 0;
 		if ( isset( $sum ) ) {
 			$response['response'] = 'success';
-			$sum                  = $sum + 1;
+			$sum                  = ++$sum;
 			$response['data']     = $sum;
 			update_option( 'es6demo_sum', $sum );
 		} else {
@@ -53,8 +58,12 @@ function es6_ajax_action() {
 	wp_die();
 }
 
+/**
+ * Add Scripts.
+ *
+ * @return void
+ */
 function wp_scripts() {
-
 	$ajaxurl = get_ajax_url();
 	$url     = plugins_url( '', __FILE__ );
 
@@ -70,7 +79,12 @@ function wp_scripts() {
 	wp_add_inline_script( 'es6-wp-ajax', "const pluginES6WPAjax = ${data};" );
 }
 
-function get_ajaxurl() : string {
+/**
+ * Get the Ajax URL.
+ *
+ * @return string
+ */
+function get_ajax_url() : string {
 	// multisite fix, use home_url() if domain mapped to avoid cross-domain issues.
 	$http_scheme = ( is_ssl() ) ? 'https' : 'http';
 	if ( home_url() !== site_url() ) {
@@ -86,16 +100,19 @@ function get_ajaxurl() : string {
  */
 add_shortcode( 'es6demo', __NAMESPACE__ . '\es6demo_form' );
 
+/**
+ * Create Demo Form.
+ *
+ * @param array $args Shortcode arguments.
+ * @return string
+ */
 function es6demo_form( $args ) {
 	$o = '';
-
 	$sum = get_option( 'es6demo_sum', 0 );
 	$o  .= '<div id="es6-demo">';
-	// $o .= 	'<div id="es6-demo-form">';
-	$o .= '<div id="es6-demo-output">' . $sum . '</div>';
-	$o .= '<form><input id="es6-demo-input" type="button" value="+" data-sum="' . $sum . '"></form>';
-	// $o .= 	'</div>';
-	$o .= '</div>';
+	$o  .= '<div id="es6-demo-output">' . $sum . '</div>';
+	$o  .= '<form><input id="es6-demo-input" type="button" value="+" data-sum="' . $sum . '"></form>';
+	$o  .= '</div>';
 
 	return $o;
 }
