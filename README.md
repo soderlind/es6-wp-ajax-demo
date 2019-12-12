@@ -39,7 +39,7 @@ if (res.response == 'success') {
 }
 ```
 
-Note: [previous release](https://github.com/soderlind/es6-wp-ajax-demo/releases/tag/1.0.2) used promise (`fetch().then().catch()`)
+Note: [previous release](https://github.com/soderlind/es6-wp-ajax-demo/releases/tag/1.0.2) used `fetch().then().catch()`
 
 ### PHP
 
