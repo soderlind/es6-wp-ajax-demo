@@ -1,8 +1,25 @@
 # Using ES6 to do a WP Ajax call
 
+
 ## Prerequisite
 
 You should know [how WordPress does Ajax](https://developer.wordpress.org/plugins/javascript/ajax/).
+
+## Look at the code
+
+I recommend that you [take a look at the code](https://github.com/soderlind/es6-wp-ajax-demo/blob/master/es6-wp-ajax-demo.js), it's not hard to understand what's happening:
+
+- Wait until  `DOMContentLoaded`
+- When `button.onclick`
+	- set action and nonce
+	- get the current sum and add it: `data.append('sum', self.dataset.sum)`
+	- `fetch(url`
+		- `body: data`
+		- WordPress receives the current sum, increments it, and returns the new sum.
+	- Read JSON returned for WP: `.then(res => res.json()`
+		- `res.response == 'success'`
+			- `self.dataset.sum = res.data`
+
 
 ## PHP
 
