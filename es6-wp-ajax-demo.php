@@ -12,7 +12,7 @@
  * Plugin URI: https://github.com/soderlind/es6-wp-ajax-demo
  * GitHub Plugin URI: https://github.com/soderlind/es6-wp-ajax-demo
  * Description: Use native JavaScript (ES6) when doing Ajax calls.
- * Version:     1.0.2
+ * Version:     2.0.0
  * Author:      Per Soderlind
  * Author URI:  https://soderlind.no
  * Text Domain: es6-wp-ajax-demo
@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const ES6_WP_AJAX_DEMO_VERSION = '1.0.2';
+const ES6_WP_AJAX_DEMO_VERSION = '2.0.0';
 
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\wp_scripts' );
 add_action( 'wp_ajax_es6_ajax_action', __NAMESPACE__ . '\es6_ajax_action' );
