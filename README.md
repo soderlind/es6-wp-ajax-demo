@@ -7,35 +7,9 @@ You should know [how WordPress does Ajax](https://developer.wordpress.org/plugin
 
 ## Look at the code
 
-I recommend that you [take a look at the code](https://github.com/soderlind/es6-wp-ajax-demo/blob/master/es6-wp-ajax-demo.js), it's not hard to understand what's happening:
+I recommend that you [take a look at the code](https://github.com/soderlind/es6-wp-ajax-demo/blob/master/es6-wp-ajax-demo.js), it's not hard to understand what's happening.
 
-- Wait until  `DOMContentLoaded`
-- When `button.onclick`
-	- set action and nonce
-	- get the current sum and add it: `data.append('sum', self.dataset.sum)`
-	- `fetch(url`
-		- `body: data`
-		- WordPress receives the current sum, increments it, and returns the new sum.
-	- Read JSON returned for WP: `.then(res => res.json()`
-		- `res.response == 'success'`
-			- `self.dataset.sum = res.data`
-
-
-## PHP
-
-The PHP code is more or less the same as you would do when using jQuery, but I've added the `fetch` [polyfill](https://en.wikipedia.org/wiki/Polyfill_(programming))
-
-```php
-// Load the fetch polyfill, url via https://polyfill.io/v3/url-builder/.
-wp_enqueue_script( 'polyfill-fetch',
-	'https://polyfill.io/v3/polyfill.min.js?features=fetch',
-	[],
-	ES6_WP_AJAX_DEMO_VERSION,
-	true
-);
-```
-
-## ES6
+### ES6
 
 First I create the `data` object using [FormData](https://javascript.info/formdata).
 
@@ -65,6 +39,20 @@ fetch(url, {
 	.catch(err => {
 		console.error(err);
 	})
+```
+
+### PHP
+
+The PHP code is more or less the same as you would do when using jQuery, but I've added the `fetch` [polyfill](https://en.wikipedia.org/wiki/Polyfill_(programming))
+
+```php
+// Load the fetch polyfill, url via https://polyfill.io/v3/url-builder/.
+wp_enqueue_script( 'polyfill-fetch',
+	'https://polyfill.io/v3/polyfill.min.js?features=fetch',
+	[],
+	ES6_WP_AJAX_DEMO_VERSION,
+	true
+);
 ```
 
 ## Demo
