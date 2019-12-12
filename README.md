@@ -20,26 +20,26 @@ data.append('nonce', pluginES6WPAjax.nonce);
 data.append('sum', self.dataset.sum);
 ```
 
-Then I use [fetch](https://javascript.info/fetch) to do the ajax call.
+Then I use [aync/await](https://javascript.info/async-await) with [fetch](https://javascript.info/fetch) to do the ajax call.
 
 ```javascript
-fetch(url, {
+const response = await fetch(url, {
 	method: 'POST',
 	credentials: 'same-origin',
 	body: data
-}).then(res => res.json())
-	.then(res => {
-		if (res.response == 'success') {
-			self.dataset.sum = res.data;
-			output.innerHTML = res.data;
-		} else {
-			console.error(res);
-		}
-	})
-	.catch(err => {
-		console.error(err);
-	})
+});
+
+const res = await response.json();
+if (res.response == 'success') {
+	self.dataset.sum = res.data;
+	output.innerHTML = res.data;
+	console.log(res);
+} else {
+	console.error(res);
+}
 ```
+
+Note: [previous release](https://github.com/soderlind/es6-wp-ajax-demo/releases/tag/1.0.2) used promise (`fetch().then().catch()`)
 
 ### PHP
 
