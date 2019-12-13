@@ -2,9 +2,9 @@
 /**
  * ES6 WP Ajax Demo
  *
- * @package     ES6 WP Ajax Demo
+ * @package     ES6_WP_AJAX_DEMO
  * @author      Per Soderlind
- * @copyright   2018 Per Soderlind
+ * @copyright   2019 Per Soderlind
  * @license     GPL-2.0+
  *
  * @wordpress-plugin
