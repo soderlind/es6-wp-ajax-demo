@@ -41,6 +41,13 @@ if (res.response == 'success') {
 
 Note: [previous release](https://github.com/soderlind/es6-wp-ajax-demo/releases/tag/1.0.2) use [fetch().then().catch()](https://github.com/soderlind/es6-wp-ajax-demo/blob/1.0.2/es6-wp-ajax-demo.js#L23-L39)
 
+
+Note 2: Why move from `fetch().then().catch()` to `async/await`?
+
+> [favor async functions and await over hand-written promise code](https://v8.dev/blog/fast-async#conclusion)
+> - V8 dev blog
+
+
 ### PHP
 
 The PHP code is more or less the same as you would do when using jQuery, but I've added the `fetch` [polyfill](https://en.wikipedia.org/wiki/Polyfill_(programming))
