@@ -1,4 +1,4 @@
-# Using ES6 to do a WP Ajax call
+# WordPress Ajax using native JavaScript
 
 
 ## Prerequisite
@@ -9,7 +9,7 @@ You should know [how WordPress does Ajax](https://developer.wordpress.org/plugin
 
 I recommend that you [take a look at the code](https://github.com/soderlind/es6-wp-ajax-demo/blob/master/es6-wp-ajax-demo.js), it's not hard to understand what's happening.
 
-### ES6
+### JavaScript (ES6)
 
 First I create the `data` object using [FormData](https://javascript.info/formdata).
 
