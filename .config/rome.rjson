@@ -1,0 +1,3 @@
+// For configuration documentation see http://romefrontend.dev/#project-configuration
+name: "es6-wp-ajax-demo"
+root: true
