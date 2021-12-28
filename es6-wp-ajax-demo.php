@@ -29,8 +29,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 const ES6_WP_AJAX_DEMO_VERSION = '2.0.0';
 
-add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\wp_scripts' );
-add_action( 'wp_ajax_es6_ajax_action', __NAMESPACE__ . '\es6_ajax_action' );
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\wp_scripts' ); 
+add_action( 'wp_ajax_es6_ajax_action', __NAMESPACE__ . '\es6_ajax_action' ); //Tell WordPress which function should handle the AJAX call.
 
 /**
  * Ajax action, triggerd by fetch() in es6-wp-ajax-demo.js
@@ -38,7 +38,7 @@ add_action( 'wp_ajax_es6_ajax_action', __NAMESPACE__ . '\es6_ajax_action' );
  * @return void
  */
 function es6_ajax_action() {
-	header( 'Content-type: application/json' );
+	header( 'Content-type: application/json' ); // The response is in JSON format, so set the correct header
 	if ( check_ajax_referer( 'es6_wp_ajax_nonce', 'nonce', false ) ) {
 		$sum = ( isset( $_POST['sum'] ) ) ? filter_var( wp_unslash( $_POST['sum'] ), FILTER_VALIDATE_INT, [ 'default' => 0 ] ) : 0;
 		if ( isset( $sum ) ) {
