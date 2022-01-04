@@ -1,5 +1,6 @@
 # WordPress Ajax using native JavaScript
 
+>A more modern approach is [WordPress REST using native JavaScript](https://github.com/soderlind/es6-wp-rest-demo)
 
 ## Prerequisite
 
